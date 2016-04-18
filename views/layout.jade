@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/jumbotron-narrow.css')
+  body
+    .container
+      .header.clearfix
+        nav
+          ul.nav.nav-pills.pull-right
+            li.active(role='presentation')
+              a(href='/') Home
+            if user 
+              li(role='presentation')
+                a(href='#') Post
+              li(role='presentation')
+                a(href='/logout') Logout
+            else
+              li(role='presentation')
+                a(href='/login') Login
+        h3.text-muted project
+        block content
+      footer.footer
+        p © project 2016

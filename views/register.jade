@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  form(method='post')
+      | user name : 
+      input(type='text', name='name')
+      br
+      | password : 
+      input(type='password', name='password')
+      br
+      | password again: 
+      input(type='password', name='password-repeated')
+      br
+      | email: 
+      input(type='email', name='email')
+      br
+      input(type='submit', value='Register') 
