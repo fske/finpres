@@ -38,15 +38,15 @@ app.use(session({
   resave:false,
   saveUninitialized: true,
 
-  secret: config.cookieSecret,
-  key: config.db,//cookie name
+  secret: config.user_db.cookieSecret,
+  key: config.user_db.db,//cookie name
   cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
   store: new MongoStore(
 //    url: 'mongodb://localhost/blog'
   {
-      db: config.db,
-      host: config.host,
-      port: config.port
+      db: config.user_db.db,
+      host: config.user_db.host,
+      port: config.user_db.port
     }
   )
 }));
