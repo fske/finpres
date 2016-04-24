@@ -117,4 +117,8 @@ function checkNotLogin(req, res, next) {
   next();
 }
 
+router.get('/show', function (req, res) {
+  res.render('p_p_m',{});
+});
+
 module.exports = router;
