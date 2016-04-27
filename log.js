@@ -7,9 +7,9 @@ log4js.configure({
     }, //控制台输出  
     {  
       type: "dateFile",  
-      filename: 'logs/log.log',  
+      filename: 'logs/web',  
       pattern: "_yyyy-MM-dd",  
-      alwaysIncludePattern: false,  
+      alwaysIncludePattern: true,  
       category: 'dateFileLog'  
     }//日期文件格式  
   ],  

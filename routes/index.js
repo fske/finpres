@@ -3,11 +3,14 @@ var router = express.Router();
 var crypto = require('crypto');
 var _ = require('underscore');
 var User = require('../models/user.js');
+var Analysis = require('../models/analysis.js');
 
 router.get('/', function (req, res) {
-  res.render('index', {
-    title: '主页'
-  });
+//  res.render('index', {
+//    title: '主页'
+//  });
+//  res.redirect("api.pre.ucloudadmin.com");
+  res.render("http:/api.pre.ucloudadmin.com", req);
 });
 
 router.get('/reg', checkNotLogin);
@@ -117,8 +120,14 @@ function checkNotLogin(req, res, next) {
   next();
 }
 
-router.get('/show', function (req, res) {
+router.get('/show', function(req, res) {
   res.render('p_p_m',{});
+});
+
+router.get('/data', function(req, res) {
+  Analysis.get(function(err, result) {
+    res.send(result);
+  });
 });
 
 module.exports = router;

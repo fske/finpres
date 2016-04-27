@@ -1,10 +1,10 @@
-var config = require('../config'),
+var config = require('../config')["user_db"],
   Db = require('mongodb').Db,
   Connection = require('mongodb').Connection,
   Server = require('mongodb').Server;
 
 module.exports = new Db(
-  config.user_db.db, 
-  new Server(config.user_db.host, config.user_db.port), 
+  config.db, 
+  new Server(config.host, config.port), 
   {safe: true}
 );
