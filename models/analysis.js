@@ -9,17 +9,19 @@ Analysis.get = function(callback) {
   //打开数据库
   pg.connect();
   var query = pg.query("SELECT gold_price FROM price_precious_metal ORDER BY bid_time DESC LIMIT 200;");
-  var result = [];
+  var results = [];
   var f = new Future();
-  query.on('row', function(row) {
+  query.on('row', function(row, result) {
     console.info("row:" + row);
-    result.push(row.gold_price);
+    result.addRow(row);
   });
-  f.return(true);
-  if (f.wait()) {
-    query.on('end', client.end.bind(client));
+  query.on('end', function(result) {
+    results = result;
     console.info("result:" + result);
-    callback("", result);
+    f.return(true);
+  });
+  if (f.wait()) {
+    console.info("results:" + results);
   }
 };
 
